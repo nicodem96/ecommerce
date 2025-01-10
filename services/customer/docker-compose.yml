@@ -1,0 +1,28 @@
+services:
+  mongodb:
+    container_name: mongo_customer
+    image: mongo:8.0.4
+    ports:
+      - "27027:27017"
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: nicola
+      MONGO_INITDB_ROOT_PASSWORD: password
+      MONGO_INITDB_DATABASE: customer_service
+    volumes:
+      - mongo:/data
+
+  mongo-express:
+    container_name: mongo_express_customer
+    image: mongo-express:1.0.2-20-alpine3.19
+    restart: unless-stopped
+    ports:
+      - 8091:8081
+    environment:
+      ME_CONFIG_MONGODB_ADMINUSERNAME: nicola
+      ME_CONFIG_MONGODB_ADMINPASSWORD: password
+      ME_CONFIG_MONGODB_URL: mongodb://nicola:password@mongodb:27017/
+    depends_on:
+      - mongodb
+
+volumes:
+  mongo:
