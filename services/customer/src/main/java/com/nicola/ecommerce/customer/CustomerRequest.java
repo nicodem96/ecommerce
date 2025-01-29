@@ -17,6 +17,8 @@ public record CustomerRequest(
     @NotNull(message = "Campo obbligatorio")
     String email,
 
-    Indirizzo address) {
+    Indirizzo address
+    
+    ) {
 }
 

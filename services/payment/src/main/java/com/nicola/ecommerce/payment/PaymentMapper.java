@@ -1,5 +1,8 @@
 package com.nicola.ecommerce.payment;
 
+import org.springframework.stereotype.Service;
+
+@Service
 public class PaymentMapper {
 
     public Payment toPayment(PaymentRequest request) {

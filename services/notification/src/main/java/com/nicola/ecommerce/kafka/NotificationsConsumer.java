@@ -1,4 +1,4 @@
-package com.nicola.ecommerce.notification;
+package com.nicola.ecommerce.kafka;
 
 import java.time.LocalDateTime;
 
@@ -8,6 +8,9 @@ import org.springframework.stereotype.Service;
 import com.nicola.ecommerce.email.EmailService;
 import com.nicola.ecommerce.kafka.order.OrderConfirmation;
 import com.nicola.ecommerce.kafka.payment.PaymentConfirmation;
+import com.nicola.ecommerce.notification.Notification;
+import com.nicola.ecommerce.notification.NotificationRepository;
+import com.nicola.ecommerce.notification.NotificationType;
 
 import jakarta.mail.MessagingException;
 import lombok.RequiredArgsConstructor;
@@ -16,7 +19,7 @@ import lombok.extern.slf4j.Slf4j;
 @Service
 @RequiredArgsConstructor
 @Slf4j
-public class NotificationConsumer {
+public class NotificationsConsumer {
 
     private final NotificationRepository repository;
     private final EmailService emailService;
