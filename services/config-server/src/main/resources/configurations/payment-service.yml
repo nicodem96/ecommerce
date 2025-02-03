@@ -23,5 +23,9 @@ spring:
       properties:
         spring.json.type.mapping: paymentConfirmation:com.nicola.ecommerce.notification.PaymentNotificationRequest
 
+application:
+  config:
+    product-url: http://localhost:8222/api/v1/products
+
 server:
   port: 8060

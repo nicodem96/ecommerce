@@ -6,6 +6,7 @@ services:
       MYSQL_USER: nicola
       MYSQL_PASSWORD: password
       MYSQL_ROOT_PASSWORD: password
+      MYSQL_DATABASE: product_service
     ports:
       - "3306:3306"
     volumes:
