@@ -42,7 +42,7 @@ public class OrderService {
         Order order = orderRepository.save(mapper.toOrder(request));
         for(PurchaseRequest purchaseRequest : request.products()) {
             orderLineService.saveOrderLine(
-                new OrderLineRequest(null, order.getId(),
+                new OrderLineRequest(order.getId(),
                     purchaseRequest.productId(),
                     purchaseRequest.quantity()
                 )
