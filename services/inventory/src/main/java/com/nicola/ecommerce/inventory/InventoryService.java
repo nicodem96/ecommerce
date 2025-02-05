@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
 import com.nicola.ecommerce.exception.ProductNotFoundException;
 import com.nicola.ecommerce.product.ProductStockUpdateRequest;
 import com.nicola.ecommerce.product.ProductStockUpdateResponse;
@@ -12,6 +14,7 @@ import lombok.RequiredArgsConstructor;
 
 @Service
 @RequiredArgsConstructor
+@Transactional
 public class InventoryService {
 
     private final InventoryRepository inventoryRepository;

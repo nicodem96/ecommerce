@@ -7,7 +7,7 @@ import org.springframework.web.service.annotation.PostExchange;
 
 public interface ProductClient {
 
-    @PostExchange("/api/v1/products/purchase")
+    @PostExchange("/purchase")
     List<PurchaseResponse> purchaseProducts(@RequestBody List<PurchaseRequest> requestBody);
 
 }

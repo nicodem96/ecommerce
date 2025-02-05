@@ -28,6 +28,7 @@ application:
     customer-url: http://localhost:8222/api/v1/customers
     product-url: http://localhost:8222/api/v1/products
     payment-url: http://localhost:8222/api/v1/payments
+    inventory-url: http://localhost:8222/api/v1/inventory
 
 server:
   port: 8070

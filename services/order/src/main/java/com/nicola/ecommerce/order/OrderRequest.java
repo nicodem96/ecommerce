@@ -16,7 +16,7 @@ public record OrderRequest(
 
     String reference,
 
-    @Positive(message = "L' importo deve essere maggiore di zero")
+    @Positive(message = "L'importo deve essere maggiore di zero")
     BigDecimal amount,
 
     @NotNull(message = "Il metodo di pagamento deve essere specificato")

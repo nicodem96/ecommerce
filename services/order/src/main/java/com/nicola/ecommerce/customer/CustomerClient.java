@@ -7,6 +7,6 @@ import org.springframework.web.service.annotation.GetExchange;
 
 public interface CustomerClient {
 
-    @GetExchange("/api/v1/customer/{customer-id}")
+    @GetExchange("/{customer-id}")
     Optional<CustomerResponse> findCustomerById(@PathVariable("customer-id") String customerId);
 }

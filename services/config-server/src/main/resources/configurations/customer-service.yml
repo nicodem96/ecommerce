@@ -4,7 +4,7 @@ spring:
       username: nicola
       password: password
       host: localhost
-      port: 27017
+      port: 27027
       database: customer_service
       authentication-database: admin
 server:

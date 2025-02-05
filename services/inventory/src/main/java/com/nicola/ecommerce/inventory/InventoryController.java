@@ -21,7 +21,7 @@ public class InventoryController {
 
     private final InventoryService inventoryService;
 
-    @PutMapping(path = "/{product-id}")
+    @PutMapping
     public ResponseEntity<List<ProductStockUpdateResponse>> updateStockIfAvailable(@RequestBody List<ProductStockUpdateRequest> requests) {
         return ResponseEntity.ok(inventoryService.updateStockIfAvailable(requests));
     }

@@ -1,6 +1,7 @@
 package com.nicola.ecommerce.payment;
 
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.nicola.ecommerce.notification.NotificationProducer;
 import com.nicola.ecommerce.notification.PaymentNotificationRequest;
@@ -9,6 +10,7 @@ import lombok.RequiredArgsConstructor;
 
 @Service
 @RequiredArgsConstructor
+@Transactional
 public class PaymentService {
 
     private final PaymentRepository repository;

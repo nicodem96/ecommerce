@@ -3,6 +3,7 @@ package com.nicola.ecommerce.order;
 import java.util.List;
 
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.nicola.ecommerce.customer.CustomerClient;
 import com.nicola.ecommerce.exception.BusinessException;
@@ -20,6 +21,7 @@ import lombok.RequiredArgsConstructor;
 
 @Service
 @RequiredArgsConstructor
+@Transactional
 public class OrderService {
 
     private final OrderRepository orderRepository;
@@ -30,7 +32,7 @@ public class OrderService {
     private final OrderProducer orderProducer;
     private final PaymentClient paymentClient;
 
-
+    
     public Integer createOrder(OrderRequest request) {
         var customer = customerClient.findCustomerById(request.customerId())
             .orElseThrow(() -> new BusinessException("Impossibile creare l'ordine:: Non è stato possibile trovare il cliente"));
