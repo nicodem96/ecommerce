@@ -17,13 +17,15 @@ public class OrderLineMapper {
                     .build()
             )
             .quantity(request.quantity())
+            .version(request.version())
             .build();
     }
 
     public OrderLineResponse toOrderLineResponse(OrderLine orderLine) {
         return new OrderLineResponse(
             orderLine.getId(),
-            orderLine.getQuantity()
+            orderLine.getQuantity(),
+            orderLine.getVersion()
         );
     }
 }

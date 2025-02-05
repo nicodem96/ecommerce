@@ -42,7 +42,8 @@ public class OrderService {
             orderLineService.saveOrderLine(
                 new OrderLineRequest(null, order.getId(),
                     purchaseRequest.productId(),
-                    purchaseRequest.quantity()
+                    purchaseRequest.quantity(),
+                    0
                 )
             );
         }

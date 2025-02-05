@@ -4,7 +4,9 @@ public record OrderLineResponse(
 
     Integer id,
 
-    double quantity
+    double quantity,
+
+    Integer version
 
 ) {
 
