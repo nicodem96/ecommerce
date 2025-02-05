@@ -44,14 +44,14 @@ public class ProductService {
         for(Product product : storedProducts) {
             ProductPurchaseRequest productRequest = requestMap.get(product.getId());
             if (productRequest.quantity() <= 0) {
-                throw new ProductPurchaseException("Quantità non valida per il prodotto con ID:: " + productRequest.productId());
+                throw new ProductPurchaseException("Quantità non valida per il prodotto con ID: " + productRequest.productId());
             }
             inventoryRequests.add(new ProductStockUpdateRequest(productRequest.productId(), productRequest.quantity()));
         }
         List<ProductStockUpdateResponse> responses = inventoryClient.updateStockIfAvailable(inventoryRequests);
         for(ProductStockUpdateResponse response : responses) {
             if (!response.success()) {
-                throw new ProductPurchaseException("Stock insufficiente per il prodotto con ID:: " + response.productId());
+                throw new ProductPurchaseException("Stock insufficiente per il prodotto con ID: " + response.productId());
             }
         }
         return storedProducts.stream()
@@ -64,7 +64,7 @@ public class ProductService {
 
     public ProductResponse findById(Integer productId) {
         return productRepository.findById(productId)
-            .map(mapper::toProductResponse).orElseThrow(() -> new EntityNotFoundException("Prodotto non trovato con ID:: " + productId));
+            .map(mapper::toProductResponse).orElseThrow(() -> new EntityNotFoundException("Prodotto non trovato con ID: " + productId));
     }
 
 

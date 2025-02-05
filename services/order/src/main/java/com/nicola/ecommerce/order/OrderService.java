@@ -37,7 +37,7 @@ public class OrderService {
     
     public Integer createOrder(OrderRequest request) {
         CustomerResponse customer = customerClient.findCustomerById(request.customerId())
-            .orElseThrow(() -> new BusinessException("Impossibile creare l'ordine:: Non è stato possibile trovare il cliente"));
+            .orElseThrow(() -> new BusinessException("Impossibile creare l'ordine: Non è stato possibile trovare il cliente"));
         List<PurchaseResponse> purchasedProducts = productClient.purchaseProducts(request.products());
         Order order = orderRepository.save(mapper.toOrder(request));
         for(PurchaseRequest purchaseRequest : request.products()) {

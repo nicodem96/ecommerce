@@ -10,6 +10,7 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import jakarta.persistence.Version;
+import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -27,7 +28,7 @@ public class OrderLine {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+    private Integer id = null;
 
     @ManyToOne
     @JoinColumn(name = "order_id")
@@ -38,6 +39,7 @@ public class OrderLine {
     private double quantity;
 
     @Version
+    @Setter(AccessLevel.NONE)
     private Integer version;
 
 }
