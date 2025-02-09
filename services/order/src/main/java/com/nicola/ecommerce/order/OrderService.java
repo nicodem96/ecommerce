@@ -6,7 +6,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.nicola.ecommerce.customer.CustomerClient;
-import com.nicola.ecommerce.customer.CustomerResponse;
 import com.nicola.ecommerce.exception.BusinessException;
 import com.nicola.ecommerce.kafka.OrderConfirmation;
 import com.nicola.ecommerce.kafka.OrderProducer;
@@ -16,7 +15,6 @@ import com.nicola.ecommerce.payment.PaymentClient;
 import com.nicola.ecommerce.payment.PaymentRequest;
 import com.nicola.ecommerce.product.ProductClient;
 import com.nicola.ecommerce.product.PurchaseRequest;
-import com.nicola.ecommerce.product.PurchaseResponse;
 
 import jakarta.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
