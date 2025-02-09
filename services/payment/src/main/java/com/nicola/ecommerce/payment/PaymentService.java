@@ -19,11 +19,9 @@ public class PaymentService {
 
     public Integer createPayment(PaymentRequest request) {
         Payment payment = repository.save(mapper.toPayment(request));
-
         notificationProducer.sendNotification(new PaymentNotificationRequest(
             request.orderReference(), request.amount(), request.paymentMethod(), request.customer().firstName(),
            request.customer().lastName(), request.customer().email()));
-
         return payment.getId();
     }
 

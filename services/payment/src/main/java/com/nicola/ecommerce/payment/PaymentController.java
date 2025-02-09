@@ -10,13 +10,13 @@ import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 
 @RestController
-@RequestMapping("/api/v1/payment")
+@RequestMapping("/api/v1/payments")
 @RequiredArgsConstructor
 public class PaymentController {
 
     private final PaymentService service;
 
-    @PostMapping
+    @PostMapping("/create")
     public ResponseEntity<Integer> createPayment(@RequestBody @Valid PaymentRequest request) {
         return ResponseEntity.ok(service.createPayment(request));
     }
