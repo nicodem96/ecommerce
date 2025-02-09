@@ -34,4 +34,8 @@ public class OrderLine {
 
     private double quantity;
 
+    // @Version
+    // @Builder.Default
+    // private Integer version = 0;
+
 }

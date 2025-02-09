@@ -5,7 +5,7 @@ import org.springframework.web.service.annotation.PostExchange;
 
 public interface PaymentClient {
 
-    @PostExchange("/api/v1/payment")
-    Integer requestOrderPayment(@RequestBody PaymentRequest request);
+    @PostExchange("/create")
+    Integer createPayment(@RequestBody PaymentRequest request);
 
 }

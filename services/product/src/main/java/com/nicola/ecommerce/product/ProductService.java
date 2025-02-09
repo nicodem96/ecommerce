@@ -34,7 +34,7 @@ public class ProductService {
             .toList();
         List<Product> storedProducts = productRepository.findAllById(productIds);
         if(productIds.size() != storedProducts.size()) {
-            throw new ProductPurchaseException("Uno o più prodotti non esistono");
+            throw new ProductPurchaseException("Uno o piu prodotti non esistono");
         }
         Map<Integer, ProductPurchaseRequest> requestMap = request.stream()
             .collect(Collectors.toMap(ProductPurchaseRequest::productId, Function.identity()));
@@ -42,7 +42,7 @@ public class ProductService {
         for(Product product : storedProducts) {
             ProductPurchaseRequest productRequest = requestMap.get(product.getId());
             if (productRequest.quantity() <= 0) {
-                throw new ProductPurchaseException("Quantità non valida per il prodotto con ID:: " + productRequest.productId());
+                throw new ProductPurchaseException("Quantita non valida per il prodotto con ID: " + productRequest.productId());
             }
             inventoryRequests.add(new ProductStockUpdateRequest(productRequest.productId(), productRequest.quantity()));
         }

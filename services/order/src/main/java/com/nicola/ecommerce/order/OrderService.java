@@ -40,18 +40,14 @@ public class OrderService {
         List<PurchaseResponse> purchasedProducts = productClient.purchaseProducts(request.products());
         Order order = orderRepository.save(mapper.toOrder(request));
         for(PurchaseRequest purchaseRequest : request.products()) {
-            orderLineService.saveOrderLine(
-                new OrderLineRequest(null, order.getId(),
-                    purchaseRequest.productId(),
-                    purchaseRequest.quantity()
-                )
-            );
+            orderLineService.saveOrderLine(new OrderLineRequest(order.getId(), purchaseRequest.productId(), purchaseRequest.quantity()));
         }
         PaymentRequest paymentRequest = new PaymentRequest(request.amount(), request.paymentMethod(), order.getId(),
              order.getReference(), customer);
-        paymentClient.requestOrderPayment(paymentRequest);
-        orderProducer.sendOrderConfirmation(new OrderConfirmation(request.reference(), request.amount()
-            , request.paymentMethod(), customer, purchasedProducts));
+        paymentClient.createPayment(paymentRequest);
+        orderProducer.sendOrderConfirmation(
+            new OrderConfirmation(request.reference(), request.amount(), request.paymentMethod(), customer, purchasedProducts)
+        );
         return order.getId();
     }
 
