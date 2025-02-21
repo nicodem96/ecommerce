@@ -34,3 +34,6 @@ build/
 
 ### Keycloak ###
 /volume-data/
+.env
+mysql_data/
+mysql_config/

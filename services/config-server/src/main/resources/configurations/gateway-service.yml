@@ -29,5 +29,12 @@ spring:
           uri: lb:http://INVENTORY-SERVICE
           predicates:
             - Path=/api/v1/inventory/**
+
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          issuer-uri: http://localhost:9099/realms/ecommerce
+
 server:
   port: 8222

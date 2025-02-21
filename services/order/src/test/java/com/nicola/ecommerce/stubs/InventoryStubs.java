@@ -6,13 +6,15 @@ import com.github.tomakehurst.wiremock.client.WireMock;
 
 @UtilityClass
 public class InventoryStubs {
-    public void stubInventoryCall(String productId, Integer quantity) {
-        WireMock.stubFor(WireMock.put(WireMock.urlPathMatching("/api/v1/inventory/" + productId))
-            .withPort(8030)
+    public void stubInventoryCall(Integer productId, Integer quantity) {
+        WireMock.stubFor(WireMock.put("/api/v1/inventory")
+            .withRequestBody(WireMock.containing("\"productId\":" + productId))
             .willReturn(WireMock.aResponse()
                 .withStatus(200)
                 .withHeader("Content-Type", "application/json")
-                .withBody("[{\"productId\":\"" + productId + "\",\"available\":true,\"message\":\"Product available\"}]")));
+                .withBody("[{\"productId\":" + productId +
+                         ",\"available\":true,\"quantity\":" + quantity +
+                         ",\"message\":\"Product available\"}]")));
     }
 }
 

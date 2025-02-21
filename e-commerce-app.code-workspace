@@ -8,6 +8,8 @@
 		"java.compile.nullAnalysis.mode": "automatic",
 		"java.project.sourcePaths": [],
 		"dbcode.connections": [],
-		"workbench.colorCustomizations": {}
+		"workbench.colorCustomizations": {},
+		"editor.fontSize": 17,
+		"workbench.colorTheme": "Eclipse Dark"
 	}
 }

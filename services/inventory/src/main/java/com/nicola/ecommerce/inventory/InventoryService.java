@@ -25,11 +25,11 @@ public class InventoryService {
             Inventory inventoryProduct = inventoryRepository.findById(request.productId())
                 .orElseThrow(() -> new ProductNotFoundException("Product not found with ID: " + request.productId()));
             if(inventoryProduct.getQuantity() < request.quantity()) {
-                stockUpdateResponses.add(new ProductStockUpdateResponse(request.productId(), false, "Insufficient stock"));
+                stockUpdateResponses.add(new ProductStockUpdateResponse(request.productId(), false, "Stock Insufficiente per il prodotto"));
             } else {
                 inventoryProduct.setQuantity(inventoryProduct.getQuantity() - request.quantity());
                 inventoryRepository.save(inventoryProduct);
-                stockUpdateResponses.add(new ProductStockUpdateResponse(request.productId(), true, "Product available"));
+                stockUpdateResponses.add(new ProductStockUpdateResponse(request.productId(), true, "Prodotto Disponibile"));
             }
         }
         return stockUpdateResponses;

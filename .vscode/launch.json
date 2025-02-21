@@ -1,0 +1,83 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Current File",
+            "request": "launch",
+            "mainClass": "${file}"
+        },
+        {
+            "type": "java",
+            "name": "ConfigServerApplication",
+            "request": "launch",
+            "mainClass": "com.nicola.configserver.ConfigServerApplication",
+            "projectName": "config-server"
+        },
+        {
+            "type": "java",
+            "name": "DiscoveryApplication",
+            "request": "launch",
+            "mainClass": "com.nicola.discovery.DiscoveryApplication",
+            "projectName": "discovery"
+        },
+        {
+            "type": "java",
+            "name": "CustomerApplication",
+            "request": "launch",
+            "mainClass": "com.nicola.ecommerce.CustomerApplication",
+            "projectName": "customer"
+        },
+        {
+            "type": "java",
+            "name": "GatewayApplication",
+            "request": "launch",
+            "mainClass": "com.nicola.gateway.GatewayApplication",
+            "projectName": "gateway"
+        },
+        {
+            "type": "java",
+            "name": "InventoryApplication",
+            "request": "launch",
+            "mainClass": "com.nicola.ecommerce.InventoryApplication",
+            "projectName": "inventory"
+        },
+        {
+            "type": "java",
+            "name": "OrderApplication",
+            "request": "launch",
+            "mainClass": "com.nicola.ecommerce.OrderApplication",
+            "projectName": "order"
+        },
+        {
+            "type": "java",
+            "name": "PaymentApplication",
+            "request": "launch",
+            "mainClass": "com.nicola.ecommerce.PaymentApplication",
+            "projectName": "payment"
+        },
+        {
+            "type": "java",
+            "name": "ProductApplication",
+            "request": "launch",
+            "mainClass": "com.nicola.ecommerce.ProductApplication",
+            "projectName": "product"
+        },
+    ],
+    "compounds": [
+    {
+        "name": "Launch Business Services",
+        "configurations": [
+            "GatewayApplication",
+            "CustomerApplication",
+            "InventoryApplication",
+            "OrderApplication",
+            "PaymentApplication",
+            "ProductApplication"
+        ]
+    }
+]
+}

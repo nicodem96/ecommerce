@@ -3,12 +3,16 @@ services:
     image: mysql:9.1.0
     container_name: product-service-mysql
     environment:
-      MYSQL_USER: nicola
-      MYSQL_PASSWORD: password
-      MYSQL_ROOT_PASSWORD: password
+      MYSQL_USER: ${MYSQL_USER:-nicola}
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
       MYSQL_DATABASE: product_service
     ports:
       - "3306:3306"
     volumes:
-      - ./mysql:/mysql/var/lib/mysql
+      - mysql_product_data:/var/lib/mysql
       - ./docker/mysql/init.sql:/docker-entrypoint-initdb.d/init.sql
+
+volumes:
+  mysql_product_data:
+    driver: local

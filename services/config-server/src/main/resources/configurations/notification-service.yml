@@ -1,11 +1,11 @@
 spring:
   data:
       mongodb:
-        username: Nicola
+        username: nicola
         password: password
         host: localhost
         port: 27017
-        database: customer
+        database: notification_service
         authentication-database: admin
 
   kafka:
@@ -21,7 +21,7 @@ spring:
   mail:
     host: localhost
     port: 1025
-    username: Nicola
+    username: nicola
     password: password
     properties:
       mail:
@@ -30,7 +30,7 @@ spring:
         auth: true
         starttls:
           enabled: true
-        connnectiontimeout: 5000
+        connectiontimeout: 5000
         timeout: 3000
         writetimeout: 5000
 
