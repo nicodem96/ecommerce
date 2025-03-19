@@ -6,6 +6,21 @@ services:
       - 1080:1080
       - 1025:1025
 
+  mysql:
+    image: mysql:9.1.0
+    container_name: ms_keycloak_db
+    environment:
+      MYSQL_USER: keycloak
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+      MYSQL_DATABASE: keycloak
+    ports:
+      - "3356:3306"
+    volumes:
+      - mysql_order_data:/var/lib/mysql
+    networks:
+      - microservices-net
+
   kafka:
     image: confluentinc/cp-kafka:7.8.0
     container_name: ms_kafka
@@ -37,20 +52,38 @@ services:
   keycloak:
     container_name: ms_keycloak
     image: quay.io/keycloak/keycloak:26.1.1
+    depends_on:
+      - mysql
     ports:
       - 9099:8080
     environment:
+      KC_DB: mysql
+      KKC_DB_URL: jdbc:mysql://mysql:3306/keycloak?useSSL=true&serverTimezone=UTC
+      KC_DB_USERNAME: ${MYSQL_USER}
+      KC_DB_PASSWORD: ${MYSQL_PASSWORD}
       KC_BOOTSTRAP_ADMIN_USERNAME: admin
       KC_BOOTSTRAP_ADMIN_PASSWORD: admin
-      KC_HTTP_ENABLED: "true"
-      KC_HOSTNAME_STRICT: "false"
-      KC_HOSTNAME_STRICT_HTTPS: "false"
+      KC_HTTPS_CERTIFICATE_FILE: /opt/keycloak/conf/cert.pem
+      KC_HTTPS_CERTIFICATE_KEY_FILE: /opt/keycloak/conf/key.pem
+      KC_PROXY: edge
+      KC_HTTP_ENABLED: "false"
+      KC_HOSTNAME_STRICT: "true"
+      KC_HOSTNAME_STRICT_HTTPS: "true"
+      PROXY_ADDRESS_FORWARDING: "true"
+      KC_HEALTH_ENABLED: "true"
+      KC_METRICS_ENABLED: "true"
+    volumes:
+      - ./certs:/opt/keycloak/conf
+      - keycloak_data:/opt/keycloak/data
     networks:
       - microservices-net
     command:
-      - "start-dev"
-      - "--http-enabled=true"
-      - "--hostname-strict=false"
+      - "start"
+      - "--optimized"
+
+volumes:
+  mysql_data:
+    driver: local
 
 networks:
   microservices-net:
